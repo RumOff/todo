@@ -14,4 +14,4 @@ Route::post('/categories', [CategoryController::class, 'store']);
 Route::patch('/categories/update', [CategoryController::class, 'update']);
 Route::delete('/categories/delete', [CategoryController::class, 'destory']);
 
-Route::get('/todos/search', ['TodoController'::class, 'search']);
+Route::get('/todos/search', [TodoController::class, 'search']);
