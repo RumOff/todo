@@ -38,5 +38,4 @@ class TodoController extends Controller
 
         return view('index', compact('todos', 'categories'));
     }
-gre
 }
