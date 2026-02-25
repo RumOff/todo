@@ -15,6 +15,7 @@ services:
     build: ./docker/php
     volumes:
       - ./src:/var/www/
+      - ./:/workspaces/todo/
 
   mysql:
     image: mysql:8.0.26

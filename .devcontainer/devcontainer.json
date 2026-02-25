@@ -1,0 +1,27 @@
+{
+  "name": "todo-laravel",
+  "dockerComposeFile": [
+    "../docker-compose.yml"
+  ],
+  "service": "php",
+  "runServices": [
+    "php",
+    "nginx",
+    "mysql",
+    "phpmyadmin"
+  ],
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "remoteUser": "root",
+  "postCreateCommand": "cd /var/www && (composer install  true) && (cp -n .env.example .env  true) && (php artisan key:generate || true)",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.cwd": "/var/www"
+      },
+      "extensions": [
+        "bmewburn.vscode-intelephense-client",
+        "xdebug.php-debug"
+      ]
+    }
+  }
+}
