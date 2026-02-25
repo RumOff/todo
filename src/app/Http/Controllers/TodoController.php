@@ -10,7 +10,7 @@ use App\Models\Category;
 class TodoController extends Controller
 {
     public function index(){
-        $todos = Todo::with('category')->paginate(10);
+        $todos = Todo::with('category')->simplepaginate(10);
         $categories = Category::all();
         return view('index', compact('todos', 'categories'));
     }

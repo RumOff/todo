@@ -31,17 +31,19 @@
     <form class="create-form" action="/todos" method="post" enctype="multipart/form-data">
     @csrf
     <div class="create-form__item">
-      <input 
-      class="create-form__item-input" 
-      type="text" 
-      name="content"
-      value="{{ old('content') }}"
-    />
-    <select class="create-form__item-select" name="category_id">
+        <input 
+        class="create-form__item-input" 
+        type="text" 
+        name="content"
+        value="{{ old('content') }}"
+        />
+        <select class="create-form__item-select" name="category_id">
+        <option value="">カテゴリ</option>
         @foreach($categories as $category)
             <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
         @endforeach
     </select>
+
     </div>
     <div class="create-form__button">
       <button class="create-form__button-submit" type="submit">作成</button>
@@ -55,6 +57,7 @@
         <div class="search-form__item">
             <input class="search-form__item-input" type="text" name="keyword" value="{{ old('keyword') }}">
             <select class="search-form__item-select" name="category_id">
+            <option value="">カテゴリ</option>
             @foreach($categories as $category)
                 <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
             @endforeach
@@ -105,5 +108,5 @@
         </table>
     </div>
 </div>
-{{-- {{ $todos->links() }} --}}
+{{ $todos->links() }}
 @endsection
