@@ -13,11 +13,12 @@ class TodoController extends Controller
         $user_id = auth()->user()->id;
         $todos = Todo::with('category')->simplepaginate(10);
         $categories = Category::all();
-        return view('index', compact('todos', 'categories'));
+        return view('index', compact('user_id','todos', 'categories'));
     }
 
     public function store(TodoRequest $request){
         $todo = $request->only(['category_id','content']);
+        $todo['user_id'] = auth()->user()->id;
         Todo::create($todo);
         return redirect('/')->with('message', 'Todoを作成しました');
     }
@@ -34,10 +35,11 @@ class TodoController extends Controller
     }
 
     public function search(Request $request){
-        $todos = Todo::with('category')->CategorySearch($request->category_id)->KeywordSearch($request->keyword)->get();
+        $todos = Todo::with('category')->CategorySearch($request->category_id)->KeywordSearch($request->keyword)->simplepaginate(10);
+        $user_id = auth()->id();
         $categories = Category::all();
 
-        return view('index', compact('todos', 'categories'));
+        return view('index', compact('todos', 'categories', 'user_id'));
     }
 
 }

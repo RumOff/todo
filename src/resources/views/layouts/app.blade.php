@@ -17,7 +17,8 @@
       <div class="header-utilities">
         <a class="header__logo" href="/">
           @auth
-          Attendance Management
+          Todo
+          <!-- Attendance Management -->
           @else
           Todo
           @endauth
@@ -26,12 +27,15 @@
           <ul class="header-nav">
 
             @guest
-            <li class="header-nav__item">
-              <a href="/categories" class="header-nav__link">カテゴリ一覧</a>
-            </li>
+              <li class="header-nav__item">
+                <a href="/categories" class="header-nav__link">カテゴリ一覧</a>
+              </li>
             @endguest
 
             @auth
+              <li class="header-nav__item">
+                <a href="/categories" class="header-nav__link">カテゴリ一覧</a>
+              </li>
               <li class="header-nav__item">
                 <a class="header-nav__link" href="/mypage">マイページ</a>
               </li>
@@ -42,7 +46,7 @@
                 </form>
               </li>
             @endauth
-            
+
           </ul>
         </nav>
       </div>
